@@ -112,7 +112,7 @@ ul li::before {
 
 .item svg:focus,
 .item svg:hover {
-  color: rgb(221, 91, 91);
+  color: red;
   outline: none;
 }
 
