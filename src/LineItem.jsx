@@ -1,7 +1,11 @@
-import React from "react";
+import { useContext } from "react";
+import DataContext from "./context/DataContext";
 import { FaTrashAlt } from "react-icons/fa";
 
-const LineItem = ({ item, handleCheck, handleDelete }) => {
+//behåller items som props
+const LineItem = ({ item }) => {
+  //hämtar dessa från DataContext
+  const { handleCheck, handleDelete } = useContext(DataContext);
   return (
     <li className="item">
       <input

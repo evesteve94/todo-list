@@ -1,15 +1,18 @@
-import { useState } from "react";
 import ItemList from "./ItemList";
+import { useContext } from "react";
+import DataContext from "./context/DataContext";
 
-const Content = ({ items, handleCheck, handleDelete }) => {
+const Content = ({ search }) => {
+  //skickas inte längre som props - utan från DataContext, inget prop drilling
+  const { items } = useContext(DataContext);
+  const filteredItems = items.filter((item) =>
+    item.item.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <main>
-      {items.length ? (
-        <ItemList
-          items={items}
-          handleCheck={handleCheck}
-          handleDelete={handleDelete}
-        />
+      {filteredItems.length ? (
+        <ItemList items={filteredItems} />
       ) : (
         <p style={{ marginTop: "2rem", textAlign: "center" }}>
           Your list is empty.
